@@ -1,20 +1,19 @@
-import { useState } from 'react'
-
 function App() {
-    const [count, setCount] = useState(0)
-
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-            <h1 className="text-4xl font-bold text-blue-600 mt-6">Vite + React + Tailwind</h1>
-
+        <div className="min-h-screen bg-gray-100 text-gray-900 flex flex-col items-center justify-center px-4">
+            <h1 className="text-4xl font-bold mb-4">
+                Multi-User Budget Tracker
+            </h1>
+            <p className="text-lg text-gray-600 mb-8">
+                Full-stack app using React, Tailwind, Node.js, and MySQL
+            </p>
             <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-                onClick={() => setCount(count + 1)}
+                className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
             >
-                count is {count}
+                Get Started
             </button>
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
