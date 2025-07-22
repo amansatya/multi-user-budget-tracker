@@ -81,7 +81,7 @@ const Home = () => {
                 </div>
             </main>
 
-            <style jsx>{`
+            <style>{`
         @keyframes fadeIn {
           from {
             opacity: 0;
