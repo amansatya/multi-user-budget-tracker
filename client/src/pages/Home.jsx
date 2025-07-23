@@ -26,7 +26,7 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <h1 className="h-22 text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r z-50 from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]">
+                        <h1 className="h-22 text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]">
                             Budget Buddy
                         </h1>
 

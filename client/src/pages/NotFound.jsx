@@ -9,11 +9,11 @@ const NotFound = () => {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-pink-100 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white px-4 transition-all duration-500">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-yellow-100 via-pink-100 to-sky-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white px-4 transition-all duration-500">
 
-            <div className="text-8xl animate-bounce mb-6">🚫️</div>
+        <div className="text-8xl animate-bounce mb-6">🚫️</div>
 
-            <h1 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 bg-clip-text text-transparent">
+            <h1 className="h-22 text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 bg-clip-text text-transparent">
                 404 - Page Not Found
             </h1>
 
