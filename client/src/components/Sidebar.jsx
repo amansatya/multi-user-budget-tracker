@@ -76,13 +76,13 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
         >
 
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <h2 className="h-8 text-xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                     Menu
                 </h2>
 
                 <button
                     onClick={onClose}
-                    className="md:hidden text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                    className="md:hidden text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors cursor-pointer"
                     aria-label="Close Sidebar"
                 >
                     <X className="w-5 h-5" />
@@ -97,7 +97,7 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
                         <button
                             key={item.label}
                             onClick={() => handleNavigation(item)}
-                            className={`flex items-center w-full px-4 py-3 rounded-lg text-left transition-all duration-200 group ${
+                            className={`flex items-center w-full px-4 py-3 rounded-lg text-left transition-all duration-200 group cursor-pointer ${
                                 isActive
                                     ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-r-2 border-blue-500"
                                     : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100"

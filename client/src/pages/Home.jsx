@@ -49,7 +49,7 @@ const Home = () => {
                             <div className="mb-12 opacity-0 animate-[fadeIn_1s_ease-out_0.8s_forwards]">
                                 <button
                                     onClick={handleGetStarted}
-                                    className="group bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center"
+                                    className="cursor-pointer group bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl inline-flex items-center"
                                 >
                                     Get Started Now
                                     <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />

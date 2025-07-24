@@ -18,7 +18,7 @@ const LayoutWrapper = ({ children }) => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 768) { // md breakpoint
+            if (window.innerWidth >= 768) {
                 setSidebarOpen(true);
             } else {
                 setSidebarOpen(false);
@@ -86,11 +86,10 @@ export default LayoutWrapper;
 // import Sidebar from "../components/Sidebar";
 //
 // const LayoutWrapper = ({ children }) => {
-//     const [sidebarOpen, setSidebarOpen] = useState(false); // Start closed on mobile, will be handled by useEffect for desktop
+//     const [sidebarOpen, setSidebarOpen] = useState(false);
 //     const [isDarkMode, setIsDarkMode] = useState(false);
-//     const [isAuthenticated] = useState(false); // This should come from your auth context later
+//     const [isAuthenticated] = useState(false);
 //
-//     // Initialize dark mode from localStorage
 //     useEffect(() => {
 //         const savedTheme = localStorage.getItem("theme");
 //         const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -100,27 +99,22 @@ export default LayoutWrapper;
 //         document.documentElement.classList.toggle("dark", shouldBeDark);
 //     }, []);
 //
-//     // Set sidebar open by default on desktop
 //     useEffect(() => {
 //         const handleResize = () => {
-//             if (window.innerWidth >= 768) { // md breakpoint
+//             if (window.innerWidth >= 768) {
 //                 setSidebarOpen(true);
 //             } else {
 //                 setSidebarOpen(false);
 //             }
 //         };
 //
-//         // Set initial state
 //         handleResize();
 //
-//         // Add event listener
 //         window.addEventListener('resize', handleResize);
 //
-//         // Cleanup
 //         return () => window.removeEventListener('resize', handleResize);
 //     }, []);
 //
-//     // Toggle dark mode and store in localStorage
 //     const toggleDarkMode = () => {
 //         const newMode = !isDarkMode;
 //         setIsDarkMode(newMode);
@@ -130,7 +124,7 @@ export default LayoutWrapper;
 //
 //     return (
 //         <div className="min-h-screen flex bg-gray-50 dark:bg-gray-900">
-//             {/* Backdrop for mobile */}
+//
 //             {sidebarOpen && (
 //                 <div
 //                     className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
@@ -138,18 +132,16 @@ export default LayoutWrapper;
 //                 />
 //             )}
 //
-//             {/* Sidebar */}
 //             <Sidebar
 //                 isOpen={sidebarOpen}
 //                 onClose={() => setSidebarOpen(false)}
 //                 isAuthenticated={isAuthenticated}
 //             />
 //
-//             {/* Main Content Area */}
 //             <div className={`flex flex-col flex-grow transition-all duration-300 ${
 //                 sidebarOpen && isAuthenticated ? 'md:ml-64' : 'ml-0'
 //             }`}>
-//                 {/* Navbar */}
+//
 //                 <Navbar
 //                     sidebarOpen={sidebarOpen}
 //                     setSidebarOpen={setSidebarOpen}
@@ -158,7 +150,6 @@ export default LayoutWrapper;
 //                     isAuthenticated={isAuthenticated}
 //                 />
 //
-//                 {/* Page content */}
 //                 <main className="flex-grow">
 //                     {children}
 //                 </main>
