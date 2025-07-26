@@ -1,10 +1,10 @@
 import React from "react";
+import RegisterForm from "../features/auth/RegisterForm";
 
 const Register = () => {
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-semibold">Register Page</h1>
-            <p>Join the Budget Buddy family — it only takes a few seconds!</p>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-950 px-4">
+            <RegisterForm />
         </div>
     );
 };
