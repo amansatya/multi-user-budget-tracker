@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard";
 import DayView from "../pages/DayView";
 import Settings from "../pages/Settings";
 import NotFound from "../pages/NotFound";
+import Reset from "../pages/Reset";
 const AppRoutes = () => {
     return (
         <Routes>
@@ -17,6 +18,7 @@ const AppRoutes = () => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/day/:date" element={<DayView />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/reset" element={<Reset />} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     );
