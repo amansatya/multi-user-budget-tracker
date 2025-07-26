@@ -1,10 +1,10 @@
 import React from "react";
+import LoginForm from "../features/auth/LoginForm";
 
 const Login = () => {
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-semibold">Login Page</h1>
-            <p>Welcome back! Please enter your credentials to continue.</p>
+        <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-950 px-4 py-8">
+            <LoginForm />
         </div>
     );
 };
