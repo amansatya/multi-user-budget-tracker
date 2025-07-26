@@ -13,13 +13,11 @@ const LoginForm = () => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        // ✅ Minimum password length check
         if (password.length < 6) {
             setError("❌ Password must be at least 6 characters long");
             return;
         }
 
-        // Mock login validation (real logic in Phase 3)
         if (email === "demo@user.com" && password === "password") {
             navigate("/dashboard");
         } else {
