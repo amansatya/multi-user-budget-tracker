@@ -37,7 +37,6 @@ const RegisterForm = () => {
             return;
         }
 
-        // Success (mock)
         console.log("Registering:", { name, email, password });
         setSuccess("✅ Registered successfully (mock)");
         setTimeout(() => navigate("/dashboard"), 1500);
