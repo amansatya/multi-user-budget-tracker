@@ -5,7 +5,7 @@
     "category": "Groceries",
     "amount": 350,
     "date": "2025-07-01",
-    "note": "Vegetables and fruits"
+    "description": "Vegetables and fruits"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "category": "Transport",
     "amount": 120,
     "date": "2025-07-02",
-    "note": "Uber to office"
+    "description": "Uber to office"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "category": "Entertainment",
     "amount": 499,
     "date": "2025-07-03",
-    "note": "Netflix subscription"
+    "description": "Netflix subscription"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "category": "Utilities",
     "amount": 850,
     "date": "2025-07-05",
-    "note": "Electricity bill"
+    "description": "Electricity bill"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "category": "Rent",
     "amount": 12500,
     "date": "2025-07-01",
-    "note": "Monthly rent"
+    "description": "Monthly rent"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "category": "Dining Out",
     "amount": 640,
     "date": "2025-07-07",
-    "note": "Dinner with friends"
+    "description": "Dinner with friends"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "category": "Groceries",
     "amount": 410,
     "date": "2025-07-10",
-    "note": "Weekend grocery run"
+    "description": "Weekend grocery run"
   },
   {
     "id": 8,
@@ -61,7 +61,7 @@
     "category": "Subscriptions",
     "amount": 299,
     "date": "2025-07-11",
-    "note": "Spotify Premium"
+    "description": "Spotify Premium"
   },
   {
     "id": 9,
@@ -69,7 +69,7 @@
     "category": "Healthcare",
     "amount": 1500,
     "date": "2025-07-15",
-    "note": "Doctor visit"
+    "description": "Doctor visit"
   },
   {
     "id": 10,
@@ -77,7 +77,7 @@
     "category": "Transport",
     "amount": 90,
     "date": "2025-07-17",
-    "note": "Bus pass"
+    "description": "Bus pass"
   },
   {
     "id": 11,
@@ -85,7 +85,7 @@
     "category": "Shopping",
     "amount": 2200,
     "date": "2025-07-19",
-    "note": "New shoes"
+    "description": "New shoes"
   },
   {
     "id": 12,
@@ -93,7 +93,7 @@
     "category": "Utilities",
     "amount": 750,
     "date": "2025-07-20",
-    "note": "Water bill"
+    "description": "Water bill"
   },
   {
     "id": 13,
@@ -101,7 +101,7 @@
     "category": "Dining Out",
     "amount": 980,
     "date": "2025-07-21",
-    "note": "Family dinner"
+    "description": "Family dinner"
   },
   {
     "id": 14,
@@ -109,7 +109,7 @@
     "category": "Entertainment",
     "amount": 120,
     "date": "2025-07-22",
-    "note": "Movie ticket"
+    "description": "Movie ticket"
   },
   {
     "id": 15,
@@ -117,7 +117,7 @@
     "category": "Groceries",
     "amount": 370,
     "date": "2025-07-25",
-    "note": "Weekend supplies"
+    "description": "Weekend supplies"
   },
   {
     "id": 16,
@@ -125,7 +125,7 @@
     "category": "Transport",
     "amount": 250,
     "date": "2025-07-26",
-    "note": "Cab rides"
+    "description": "Cab rides"
   },
   {
     "id": 17,
@@ -133,7 +133,7 @@
     "category": "Rent",
     "amount": 12000,
     "date": "2025-08-01",
-    "note": "August rent"
+    "description": "August rent"
   },
   {
     "id": 18,
@@ -141,7 +141,7 @@
     "category": "Entertainment",
     "amount": 399,
     "date": "2025-08-02",
-    "note": "Book purchase"
+    "description": "Book purchase"
   },
   {
     "id": 19,
@@ -149,7 +149,7 @@
     "category": "Healthcare",
     "amount": 2300,
     "date": "2025-08-04",
-    "note": "Lab tests"
+    "description": "Lab tests"
   },
   {
     "id": 20,
@@ -157,6 +157,6 @@
     "category": "Subscriptions",
     "amount": 199,
     "date": "2025-08-05",
-    "note": "Amazon Prime"
+    "description": "Amazon Prime"
   }
 ]
