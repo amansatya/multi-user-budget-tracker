@@ -4,7 +4,7 @@
     "userId": "user123",
     "category": "Groceries",
     "amount": 350,
-    "date": "2025-07-01",
+    "date": "01-07-2025",
     "description": "Vegetables and fruits"
   },
   {
@@ -12,7 +12,7 @@
     "userId": "user123",
     "category": "Transport",
     "amount": 120,
-    "date": "2025-07-02",
+    "date": "02-07-2025",
     "description": "Uber to office"
   },
   {
@@ -20,7 +20,7 @@
     "userId": "user456",
     "category": "Entertainment",
     "amount": 499,
-    "date": "2025-07-03",
+    "date": "03-07-2025",
     "description": "Netflix subscription"
   },
   {
@@ -28,7 +28,7 @@
     "userId": "user123",
     "category": "Utilities",
     "amount": 850,
-    "date": "2025-07-05",
+    "date": "05-07-2025",
     "description": "Electricity bill"
   },
   {
@@ -36,7 +36,7 @@
     "userId": "user789",
     "category": "Rent",
     "amount": 12500,
-    "date": "2025-07-01",
+    "date": "01-07-2025",
     "description": "Monthly rent"
   },
   {
@@ -44,7 +44,7 @@
     "userId": "user456",
     "category": "Dining Out",
     "amount": 640,
-    "date": "2025-07-07",
+    "date": "07-07-2025",
     "description": "Dinner with friends"
   },
   {
@@ -52,7 +52,7 @@
     "userId": "user123",
     "category": "Groceries",
     "amount": 410,
-    "date": "2025-07-10",
+    "date": "10-07-2025",
     "description": "Weekend grocery run"
   },
   {
@@ -60,7 +60,7 @@
     "userId": "user456",
     "category": "Subscriptions",
     "amount": 299,
-    "date": "2025-07-11",
+    "date": "11-07-2025",
     "description": "Spotify Premium"
   },
   {
@@ -68,7 +68,7 @@
     "userId": "user123",
     "category": "Healthcare",
     "amount": 1500,
-    "date": "2025-07-15",
+    "date": "15-07-2025",
     "description": "Doctor visit"
   },
   {
@@ -76,7 +76,7 @@
     "userId": "user789",
     "category": "Transport",
     "amount": 90,
-    "date": "2025-07-17",
+    "date": "17-07-2025",
     "description": "Bus pass"
   },
   {
@@ -84,7 +84,7 @@
     "userId": "user123",
     "category": "Shopping",
     "amount": 2200,
-    "date": "2025-07-19",
+    "date": "19-07-2025",
     "description": "New shoes"
   },
   {
@@ -92,7 +92,7 @@
     "userId": "user456",
     "category": "Utilities",
     "amount": 750,
-    "date": "2025-07-20",
+    "date": "20-07-2025",
     "description": "Water bill"
   },
   {
@@ -100,7 +100,7 @@
     "userId": "user789",
     "category": "Dining Out",
     "amount": 980,
-    "date": "2025-07-21",
+    "date": "21-07-2025",
     "description": "Family dinner"
   },
   {
@@ -108,7 +108,7 @@
     "userId": "user123",
     "category": "Entertainment",
     "amount": 120,
-    "date": "2025-07-22",
+    "date": "22-07-2025",
     "description": "Movie ticket"
   },
   {
@@ -116,7 +116,7 @@
     "userId": "user456",
     "category": "Groceries",
     "amount": 370,
-    "date": "2025-07-25",
+    "date": "25-07-2025",
     "description": "Weekend supplies"
   },
   {
@@ -124,7 +124,7 @@
     "userId": "user789",
     "category": "Transport",
     "amount": 250,
-    "date": "2025-07-26",
+    "date": "26-07-2025",
     "description": "Cab rides"
   },
   {
@@ -132,7 +132,7 @@
     "userId": "user123",
     "category": "Rent",
     "amount": 12000,
-    "date": "2025-08-01",
+    "date": "01-08-2025",
     "description": "August rent"
   },
   {
@@ -140,7 +140,7 @@
     "userId": "user456",
     "category": "Entertainment",
     "amount": 399,
-    "date": "2025-08-02",
+    "date": "02-08-2025",
     "description": "Book purchase"
   },
   {
@@ -148,7 +148,7 @@
     "userId": "user789",
     "category": "Healthcare",
     "amount": 2300,
-    "date": "2025-08-04",
+    "date": "04-08-2025",
     "description": "Lab tests"
   },
   {
@@ -156,7 +156,7 @@
     "userId": "user123",
     "category": "Subscriptions",
     "amount": 199,
-    "date": "2025-08-05",
+    "date": "05-08-2025",
     "description": "Amazon Prime"
   }
 ]
