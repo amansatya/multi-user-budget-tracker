@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
-const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit = 5000, onSave }) => {
-    const [limit, setLimit] = useState(initialLimit);
+const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit, onSave }) => {
+    const [limit, setLimit] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        setLimit(initialLimit);
+        setLimit(initialLimit || "");
         setError("");
     }, [initialLimit, isOpen]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (isNaN(limit) || limit <= 0) {
+        if (!limit || isNaN(Number(limit)) || Number(limit) <= 0) {
             setError("Please enter a valid budget greater than ₹0.");
             return;
         }
 
-        // Phase 3: Here we’ll POST/PUT to backend
         console.log("💰 Monthly Budget Set To:", limit);
 
-        if (onSave) onSave(limit);
+        if (onSave) onSave(Number(limit));
         onClose();
     };
+
+    const isFormValid = limit && !isNaN(Number(limit)) && Number(limit) > 0;
 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
-            <div className="bg-white dark:bg-gray-900 p-6 rounded-lg w-full max-w-md shadow-lg relative">
-                <button onClick={onClose} className="absolute top-3 right-3 text-gray-500 hover:text-red-500">
+        <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-900/60 via-purple-800/50 to-pink-700/40 dark:from-slate-900/80 dark:via-gray-800/70 dark:to-zinc-900/60 backdrop-blur-sm">
+            <div className="bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-800 dark:via-slate-800 dark:to-gray-900 border border-white/20 dark:border-gray-700/50 p-6 rounded-lg shadow-lg w-full max-w-md relative">
+                <button onClick={onClose} className="cursor-pointer absolute top-3 right-3 text-gray-500 hover:text-red-500">
                     <X />
                 </button>
 
@@ -41,7 +42,7 @@ const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit = 5000, onSave }) 
                     Enter your desired monthly expense limit.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
                             Monthly Limit (₹)
@@ -50,20 +51,25 @@ const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit = 5000, onSave }) 
                             type="number"
                             min={1}
                             value={limit}
-                            onChange={(e) => setLimit(Number(e.target.value))}
+                            onChange={(e) => setLimit(e.target.value)}
                             className="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white border-gray-300 dark:border-gray-700"
-                            placeholder="e.g. 5000"
+                            placeholder="e.g. 50000"
                         />
                         {error && <p className="text-red-600 text-sm mt-1">❌ {error}</p>}
                     </div>
 
                     <button
-                        type="submit"
-                        className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all"
+                        onClick={handleSubmit}
+                        disabled={!isFormValid}
+                        className={`cursor-pointer w-full py-2 px-4 font-semibold rounded-md transition-all ${
+                            isFormValid
+                                ? "bg-blue-600 text-white hover:bg-blue-700"
+                                : "bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
+                        }`}
                     >
                         Save Budget
                     </button>
-                </form>
+                </div>
             </div>
         </div>
     );
