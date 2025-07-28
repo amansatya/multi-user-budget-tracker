@@ -9,7 +9,7 @@ const AlertModal = ({ isOpen, onClose, totalSpent, monthlyBudget }) => {
             <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 rounded-lg shadow-lg max-w-md w-full p-6 relative border border-red-500 dark:border-red-600">
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 text-gray-400 hover:text-red-500"
+                    className="cursor-pointer absolute top-3 right-3 text-gray-400 hover:text-red-500"
                 >
                     <X />
                 </button>
