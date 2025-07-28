@@ -1,5 +1,3 @@
-// src/components/LineChart.jsx
-
 import React from "react";
 import {
     LineChart as ReLineChart,
@@ -12,17 +10,17 @@ import {
     Legend
 } from "recharts";
 import mockExpenses from "../../data/mockExpenses.json";
-import { format, parseISO } from "date-fns";
 
-// Helper: Aggregate daily spending for current month
 const getMonthlySpending = () => {
     const currentMonth = new Date().getMonth();
     const spendingMap = {};
 
     mockExpenses.forEach((expense) => {
-        const date = new Date(expense.date);
+        const [day, month, year] = expense.date.split('-');
+        const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+
         if (date.getMonth() === currentMonth) {
-            const dayKey = format(date, "yyyy-MM-dd");
+            const dayKey = expense.date;
             spendingMap[dayKey] = (spendingMap[dayKey] || 0) + expense.amount;
         }
     });
@@ -32,15 +30,26 @@ const getMonthlySpending = () => {
         amount: total,
     }));
 
-    // Sort by date
-    return formatted.sort((a, b) => new Date(a.date) - new Date(b.date));
+    return formatted.sort((a, b) => {
+        const [dayA, monthA, yearA] = a.date.split('-');
+        const [dayB, monthB, yearB] = b.date.split('-');
+        return new Date(parseInt(yearA), parseInt(monthA) - 1, parseInt(dayA)).getTime() -
+            new Date(parseInt(yearB), parseInt(monthB) - 1, parseInt(dayB)).getTime();
+    });
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
+        const [day, month, year] = label.split('-');
+        const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+        const formattedDate = date.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short'
+        });
+
         return (
             <div className="bg-gray-800 text-white px-3 py-1 rounded shadow text-sm">
-                <p>{format(parseISO(label), "MMM dd")}:</p>
+                <p>{formattedDate}:</p>
                 <p className="font-semibold">₹{payload[0].value}</p>
             </div>
         );
@@ -61,7 +70,12 @@ const SpendingLineChart = () => {
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis
                         dataKey="date"
-                        tickFormatter={(date) => format(parseISO(date), "dd MMM")}
+                        tickFormatter={(date) => {
+                            const [day, month] = date.split('-');
+                            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+                            return `${day} ${monthNames[parseInt(month) - 1]}`;
+                        }}
                         stroke="#94a3b8"
                         className="text-sm"
                     />
