@@ -7,8 +7,9 @@ const DashboardFilters = ({ onFilter }) => {
     const [fromDate, setFromDate] = useState("");
     const [toDate, setToDate] = useState("");
 
-    // Extract unique categories from mock data (for now)
     const categories = Array.from(new Set(mockExpenses.map(exp => exp.category)));
+
+    const hasActiveFilters = category || fromDate || toDate;
 
     const handleApplyFilters = () => {
         onFilter({ category, fromDate, toDate });
@@ -28,7 +29,7 @@ const DashboardFilters = ({ onFilter }) => {
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Category Filter */}
+
                 <div>
                     <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">
                         Category
@@ -47,7 +48,6 @@ const DashboardFilters = ({ onFilter }) => {
                     </select>
                 </div>
 
-                {/* From Date */}
                 <div>
                     <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">
                         From
@@ -56,12 +56,14 @@ const DashboardFilters = ({ onFilter }) => {
                         <CalendarDays className="w-4 h-4 text-gray-500 dark:text-gray-400 mr-2" />
                         <input
                             type="date"
-                            className="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 dark:bg-gray-800 dark:text-white dark:border-gray-700 appearance-none relative cursor-pointer [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                            value={fromDate}
+                            onChange={(e) => setFromDate(e.target.value)}
+                            className="w-full px-4 py-2 rounded-md bg-gray-50 text-gray-800 dark:bg-gray-800 dark:text-white appearance-none relative cursor-pointer dark:[&::-webkit-calendar-picker-indicator]:invert
+                             [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                         />
                     </div>
                 </div>
 
-                {/* To Date */}
                 <div>
                     <label className="block text-sm text-gray-600 dark:text-gray-300 mb-1">
                         To
@@ -70,13 +72,15 @@ const DashboardFilters = ({ onFilter }) => {
                         <CalendarDays className="w-4 h-4 text-gray-500 dark:text-gray-400 mr-2" />
                         <input
                             type="date"
-                            className="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-600 dark:bg-gray-800 dark:text-white dark:border-gray-700 appearance-none relative cursor-pointer [&::-webkit-calendar-picker-indicator]:invert [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                            value={toDate}
+                            onChange={(e) => setToDate(e.target.value)}
+                            className="w-full px-4 py-2 rounded-md bg-gray-50 text-gray-800 dark:bg-gray-800 dark:text-white appearance-none relative cursor-pointer dark:[&::-webkit-calendar-picker-indicator]:invert
+                             [&::-webkit-calendar-picker-indicator]:cursor-pointer"
                         />
                     </div>
                 </div>
             </div>
 
-            {/* Buttons */}
             <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-between items-center">
                 <button
                     onClick={handleApplyFilters}
@@ -87,7 +91,12 @@ const DashboardFilters = ({ onFilter }) => {
 
                 <button
                     onClick={handleClearFilters}
-                    className="flex items-center text-sm text-red-600 dark:text-red-400 hover:underline"
+                    disabled={!hasActiveFilters}
+                    className={`cursor-pointer flex items-center text-sm ${
+                        hasActiveFilters
+                            ? "text-red-600 dark:text-red-400 hover:underline"
+                            : "text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                    }`}
                 >
                     <XCircle className="w-4 h-4 mr-1" />
                     Clear Filters
