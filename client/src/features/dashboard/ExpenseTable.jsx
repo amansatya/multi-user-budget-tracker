@@ -4,9 +4,12 @@ const ExpenseTable = ({ expenses }) => {
     const itemsPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalPages = Math.ceil(expenses.length / itemsPerPage);
+    // Sort expenses by date (oldest first)
+    const sortedExpenses = [...expenses].sort((a, b) => new Date(a.date) - new Date(b.date));
 
-    const paginatedExpenses = expenses.slice(
+    const totalPages = Math.ceil(sortedExpenses.length / itemsPerPage);
+
+    const paginatedExpenses = sortedExpenses.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
