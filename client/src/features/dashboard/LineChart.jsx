@@ -87,7 +87,7 @@ const SpendingLineChart = () => {
                     <Tooltip content={<CustomTooltip />} />
                     <Legend />
                     <Line
-                        type="monotne"
+                        type="monotone"
                         dataKey="amount"
                         stroke="#3B82F6"
                         strokeWidth={2.5}
