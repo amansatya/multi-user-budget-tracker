@@ -132,7 +132,7 @@
     "userId": "user123",
     "category": "Rent",
     "amount": 12000,
-    "date": "01-08-2025",
+    "date": "01-07-2025",
     "description": "August rent"
   },
   {
@@ -140,7 +140,7 @@
     "userId": "user456",
     "category": "Entertainment",
     "amount": 399,
-    "date": "02-08-2025",
+    "date": "02-07-2025",
     "description": "Book purchase"
   },
   {
@@ -148,7 +148,7 @@
     "userId": "user789",
     "category": "Healthcare",
     "amount": 2300,
-    "date": "04-08-2025",
+    "date": "04-07-2025",
     "description": "Lab tests"
   },
   {
@@ -156,7 +156,7 @@
     "userId": "user123",
     "category": "Subscriptions",
     "amount": 199,
-    "date": "05-08-2025",
+    "date": "05-07-2025",
     "description": "Amazon Prime"
   }
 ]
