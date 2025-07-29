@@ -1,26 +1,33 @@
 import React from "react";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { useNavigate } from "react-router-dom";
 import { getCategoryColor } from "../../utils/categoryHelpers";
 
-const CustomLegend = ({ payload }) => (
-    <ul className="flex flex-wrap gap-4 mt-4 justify-center text-sm">
-        {payload.map((entry, index) => (
-            <li key={`item-${index}`} className="flex items-center gap-2">
-                <span
-                    className="inline-block w-4 h-4 rounded-full"
-                    style={{ backgroundColor: entry.color }}
-                ></span>
-                <span className="text-gray-700 dark:text-gray-300">{entry.value}</span>
-            </li>
-        ))}
-    </ul>
+const CustomLegend = ({ data, navigate }) => (
+    <div className="mt-6">
+        <div className="flex flex-wrap gap-3 justify-center">
+            {data.map((entry, index) => (
+                <div
+                    key={`legend-${index}`}
+                    className="flex items-center gap-2 cursor-pointer hover:opacity-75 transition-opacity"
+                    onClick={() => navigate(`/categoryview/${encodeURIComponent(entry.name)}`)}
+                >
+                    <div
+                        className="w-4 h-4 rounded-sm"
+                        style={{ backgroundColor: getCategoryColor(entry.name) }}
+                    ></div>
+                    <span className="text-sm text-gray-700 dark:text-gray-300">
+                        {entry.name}
+                    </span>
+                </div>
+            ))}
+        </div>
+    </div>
 );
 
 const PieChartComponent = ({ data }) => {
     const navigate = useNavigate();
 
-    // Format and aggregate data by category
     const formattedData = data.reduce((acc, item) => {
         const existing = acc.find((d) => d.name === item.category);
         if (existing) {
@@ -37,7 +44,7 @@ const PieChartComponent = ({ data }) => {
     };
 
     return (
-        <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+        <div className="bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-800 dark:via-slate-800 dark:to-gray-900 border border-white/20 dark:border-gray-700/50 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">
                 Spending by Category
             </h2>
@@ -71,7 +78,7 @@ const PieChartComponent = ({ data }) => {
                 </PieChart>
             </ResponsiveContainer>
 
-            <Legend content={<CustomLegend />} />
+            <CustomLegend data={formattedData} navigate={navigate} />
         </div>
     );
 };
