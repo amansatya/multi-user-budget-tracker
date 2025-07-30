@@ -44,7 +44,8 @@ const PieChartComponent = ({ data }) => {
     };
 
     return (
-        <div className="bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-800 dark:via-slate-800 dark:to-gray-900 border border-white/20 dark:border-gray-700/50 p-6 rounded-lg shadow-md">
+        <div className="bg-gradient-to-br from-slate-300 via-blue-50/30 to-indigo-100
+                       dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">
                 Spending by Category
             </h2>

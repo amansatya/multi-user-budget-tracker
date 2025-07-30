@@ -128,7 +128,7 @@ const DashboardFilters = ({ onFilter }) => {
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-between items-center">
                 <button
                     onClick={handleApplyFilters}
-                    className="group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700
+                    className="cursor-pointer group bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700
                              text-white py-3 px-8 rounded-xl w-full sm:w-auto
                              shadow-lg hover:shadow-xl transform hover:scale-105
                              transition-all duration-200 font-medium
@@ -141,7 +141,7 @@ const DashboardFilters = ({ onFilter }) => {
                 <button
                     onClick={handleClearFilters}
                     disabled={!hasActiveFilters}
-                    className={`flex items-center gap-2 text-sm font-medium transition-all duration-200 ${
+                    className={`cursor-pointer flex items-center gap-2 text-sm font-medium transition-all duration-200 ${
                         hasActiveFilters
                             ? "text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/20 px-3 py-2 rounded-lg"
                             : "text-gray-400 dark:text-gray-600 cursor-not-allowed"

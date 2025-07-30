@@ -47,10 +47,10 @@ const Dashboard = () => {
 
     return (
         <div className="p-6 space-y-6">
-            {/* 👋 Welcome & Actions */}
+
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                    <h1 className="text-2xl font-semibold text-gray-800 dark:text-black">
                         Welcome back, Satya!
                     </h1>
                     <p className="text-gray-600 dark:text-gray-400">
@@ -73,7 +73,6 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            {/* 🚨 Alert Modal - FIXED: Added missing props */}
             <AlertModal
                 isOpen={showAlert}
                 onClose={() => setShowAlert(false)}
@@ -81,22 +80,17 @@ const Dashboard = () => {
                 monthlyBudget={monthlyBudget}
             />
 
-            {/* 🎛️ Filters */}
             <DashboardFilters onFilter={handleFilter} />
 
-            {/* 💸 Expense Table */}
             <ExpenseTable expenses={filteredExpenses} />
 
-            {/* 📊 Charts Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <PieChart data={filteredExpenses} />
                 <BudgetProgressBar data={filteredExpenses} monthlyLimit={monthlyBudget} />
             </div>
 
-            {/* 📈 Line Chart */}
-            <LineChart data={filteredExpenses} />
+            <LineChart data={mockExpenses} />
 
-            {/* 💬 Modals */}
             {showAddModal && (
                 <AddExpenseModal
                     isOpen={showAddModal}

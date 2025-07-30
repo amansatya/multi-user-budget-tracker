@@ -31,14 +31,13 @@ const ExpenseTable = ({ expenses }) => {
     const getAverageSpendPerDay = () => {
         if (expenses.length === 0) return 0;
 
-        // Get unique month-year combinations from expenses
         const uniqueMonths = new Set();
         expenses.forEach(expense => {
-            const date = parseDate(expense.date); // Use our custom parser
+            const date = parseDate(expense.date);
 
-            if (!isNaN(date.getTime())) { // Check if date is valid
+            if (!isNaN(date.getTime())) {
                 const year = date.getFullYear();
-                const month = date.getMonth() + 1; // Convert 0-11 to 1-12
+                const month = date.getMonth() + 1;
                 const monthKey = `${year}-${month}`;
                 uniqueMonths.add(monthKey);
             }
@@ -96,7 +95,7 @@ const ExpenseTable = ({ expenses }) => {
                             <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800
                                           dark:from-gray-100 dark:via-white dark:to-gray-100
                                           bg-clip-text text-transparent">
-                                💰 Expense Table
+                                Expense Table
                             </h2>
                         </div>
 
