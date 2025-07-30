@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
     LineChart as ReLineChart,
     Line,
@@ -9,33 +9,38 @@ import {
     CartesianGrid,
     Legend
 } from "recharts";
-import mockExpenses from "../../data/mockExpenses.json";
 
-const getMonthlySpending = () => {
-    const currentMonth = new Date().getMonth();
+const getMonthlySpending = (expensesData) => {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
     const spendingMap = {};
-
-    mockExpenses.forEach((expense) => {
+    expensesData.forEach((expense) => {
         const [day, month, year] = expense.date.split('-');
         const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
 
-        if (date.getMonth() === currentMonth) {
+        if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
             const dayKey = expense.date;
             spendingMap[dayKey] = (spendingMap[dayKey] || 0) + expense.amount;
         }
     });
 
-    const formatted = Object.entries(spendingMap).map(([date, total]) => ({
-        date,
-        amount: total,
-    }));
+    const allDates = [];
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayStr = day.toString().padStart(2, '0');
+        const monthStr = (currentMonth + 1).toString().padStart(2, '0');
+        const dateKey = `${dayStr}-${monthStr}-${currentYear}`;
 
-    return formatted.sort((a, b) => {
-        const [dayA, monthA, yearA] = a.date.split('-');
-        const [dayB, monthB, yearB] = b.date.split('-');
-        return new Date(parseInt(yearA), parseInt(monthA) - 1, parseInt(dayA)).getTime() -
-            new Date(parseInt(yearB), parseInt(monthB) - 1, parseInt(dayB)).getTime();
-    });
+        allDates.push({
+            date: dateKey,
+            amount: spendingMap[dateKey] || 0,
+        });
+    }
+
+    return allDates;
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
@@ -50,24 +55,46 @@ const CustomTooltip = ({ active, payload, label }) => {
         return (
             <div className="bg-gray-800 text-white px-3 py-1 rounded shadow text-sm">
                 <p>{formattedDate}:</p>
-                <p className="font-semibold">₹{payload[0].value}</p>
+                <p className="font-semibold">
+                    {payload[0].value === 0 ? 'No spending' : `₹${payload[0].value}`}
+                </p>
             </div>
         );
     }
     return null;
 };
 
-const SpendingLineChart = () => {
-    const data = getMonthlySpending();
+const SpendingLineChart = ({ data = [] }) => {
+    const chartData = getMonthlySpending(data);
+
+    const [isDarkMode, setIsDarkMode] = useState(
+        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+    );
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const handleChange = (e) => {
+            setIsDarkMode(e.matches);
+        };
+
+        mediaQuery.addEventListener('change', handleChange);
+
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []);
+
+    const gridStroke = isDarkMode ? '#e2e8f0' : '#000000';
+    const axisStroke = isDarkMode ? '#e2e8f0' : '#111827';
 
     return (
-        <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+        <div className="bg-gradient-to-br from-slate-300 via-blue-50/30 to-indigo-100
+                       dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold text-center text-gray-800 dark:text-white mb-4">
                 Daily Spending – This Month
             </h2>
             <ResponsiveContainer width="100%" height={300}>
-                <ReLineChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <ReLineChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke={gridStroke} />
                     <XAxis
                         dataKey="date"
                         tickFormatter={(date) => {
@@ -76,11 +103,13 @@ const SpendingLineChart = () => {
                                 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                             return `${day} ${monthNames[parseInt(month) - 1]}`;
                         }}
-                        stroke="#94a3b8"
+                        stroke={axisStroke}
                         className="text-sm"
+                        interval="preserveStartEnd"
+                        tick={{ fontSize: 12 }}
                     />
                     <YAxis
-                        stroke="#94a3b8"
+                        stroke={axisStroke}
                         tickFormatter={(value) => `₹${value}`}
                         className="text-sm"
                     />
@@ -93,6 +122,7 @@ const SpendingLineChart = () => {
                         strokeWidth={2.5}
                         dot={{ r: 4 }}
                         activeDot={{ r: 6, stroke: "#2563EB", strokeWidth: 2, fill: "white" }}
+                        connectNulls={false}
                     />
                 </ReLineChart>
             </ResponsiveContainer>
