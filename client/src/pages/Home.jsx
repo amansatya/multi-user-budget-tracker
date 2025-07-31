@@ -12,7 +12,7 @@ const Home = () => {
 
     return (
         <LayoutWrapper>
-            <div className="min-h-screen font-[Poppins] bg-gradient-to-br from-[#f2f7fd] via-[#eaeefc] to-[#e1e8f9] dark:from-gray-950 dark:via-gray-900 dark:to-purple-950 text-gray-900 dark:text-gray-100">
+            <div className="min-h-screen font-[Poppins] bg-gradient-to-br from-[#f2f7fd] via-[#eaeefc] to-[#e1e8f9] dark:from-gray-900 dark:via-gray-900 dark:to-purple-950 text-gray-900 dark:text-gray-100">
                 <main className="relative overflow-hidden">
 
                     <div className="absolute inset-0 overflow-hidden z-0">
@@ -30,7 +30,7 @@ const Home = () => {
                                 </div>
                             </div>
 
-                            <h1 className="h-22 text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-700 via-purple-600 to-pink-600 dark:from-blue-300 dark:via-purple-300 dark:to-pink-300 bg-clip-text text-transparent opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]">
+                            <h1 className="h-22 text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600  bg-clip-text text-transparent opacity-0 animate-[fadeIn_1s_ease-out_0.4s_forwards]">
                                 Budget Buddy
                             </h1>
 
@@ -41,8 +41,8 @@ const Home = () => {
                                 <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300">
                                     Collaborate with family and friends to manage budgets, track expenses, and achieve your financial goals together
                                 </p>
-                                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400">
-                                    Real-time insights, beautiful dashboards, and smart recommendations to make budgeting effortless
+                                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300">
+                                    Real-time insights, and beautiful dashboards to make budgeting effortless
                                 </p>
                             </div>
 

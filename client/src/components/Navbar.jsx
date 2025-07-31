@@ -20,7 +20,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAut
     };
 
     return (
-        <header className="w-full px-4 py-3 shadow-sm bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center relative z-50">
+        <header className="w-full px-4 py-3 shadow-sm bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 dark:bg-gradient-to-r dark:from-gray-900 dark:via-blue-900 dark:to-indigo-950 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center relative z-50">
             <div className="flex items-center gap-4">
                 {isAuthenticated && (
                     <button

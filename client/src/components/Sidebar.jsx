@@ -9,7 +9,7 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
 
     if (!isAuthenticated) return null;
 
-    const today = format(new Date(), "yyyy-MM-dd");
+    const today = format(new Date(), "dd-MM-yy");
 
     const navItems = [
         {
@@ -26,7 +26,7 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
             label: "Analytics & Charts",
             icon: <BarChart2 className="w-5 h-5" />,
             path: "/dashboard",
-            hash: "#charts",
+            scrollTo: "charts",
         },
         {
             label: "Settings",
@@ -42,8 +42,18 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
     ];
 
     const handleNavigation = (item) => {
-        if (item.hash) {
-
+        if (item.scrollTo) {
+            // Navigate to dashboard first
+            navigate(item.path);
+            // Wait for navigation to complete, then scroll to charts section
+            setTimeout(() => {
+                // Look for the charts section (grid containing PieChart and BudgetProgressBar)
+                const chartsSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2');
+                if (chartsSection) {
+                    chartsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        } else if (item.hash) {
             navigate(item.path);
             setTimeout(() => {
                 const element = document.querySelector(item.hash);
@@ -70,7 +80,7 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
     return (
         <aside
             className={`fixed top-0 left-0 h-full w-64 z-40 transition-transform duration-300 transform 
-                bg-white dark:bg-gray-800 
+                bg-gradient-to-b from-blue-100 via-purple-100 to-pink-100 dark:bg-gradient-to-b dark:from-gray-900 dark:via-blue-900 dark:to-purple-950
                 shadow-lg border-r border-gray-200 dark:border-gray-700 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
         >
