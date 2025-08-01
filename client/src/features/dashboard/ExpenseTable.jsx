@@ -6,7 +6,7 @@ const ExpenseTable = ({ expenses }) => {
 
     function parseDate(dateString) {
         const [day, month, year] = dateString.split('-').map(Number);
-        return new Date(year, month - 1, day); // month - 1 because Date() expects 0-11
+        return new Date(year, month - 1, day);
     }
 
     const sortedExpenses = [...expenses].sort((a, b) => {
@@ -95,7 +95,7 @@ const ExpenseTable = ({ expenses }) => {
                             <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800
                                           dark:from-gray-100 dark:via-white dark:to-gray-100
                                           bg-clip-text text-transparent">
-                                Expense Table
+                                Expense Table - Current Month
                             </h2>
                         </div>
 
@@ -154,118 +154,128 @@ const ExpenseTable = ({ expenses }) => {
                             </h3>
                         </div>
 
-                        <div className="overflow-hidden">
-                            <div className="overflow-x-auto">
-                                <table className="w-full">
-                                    <thead>
-                                    <tr className="bg-gradient-to-r from-gray-50 to-gray-100/50
-                                                      dark:from-gray-800/50 dark:to-gray-700/30
-                                                      border-b border-gray-200/50 dark:border-gray-600/30">
-                                        <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                                            Date
-                                        </th>
-                                        <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                                            Category
-                                        </th>
-                                        <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                                            Amount
-                                        </th>
-                                        <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
-                                            Description
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody className="divide-y divide-gray-200/50 dark:divide-gray-700/30">
-                                    {paginatedExpenses.map((expense) => (
-                                        <tr key={expense.id}
-                                            className="group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-transparent
-                                                          dark:hover:from-blue-900/20 dark:hover:to-transparent
-                                                          transition-all duration-200">
-                                            <td className="px-8 py-6 text-gray-700 dark:text-gray-300 font-medium">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500
-                                                                       rounded-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                                                    {expense.date}
-                                                </div>
-                                            </td>
-                                            <td className="px-8 py-6">
-                                                    <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-bold
-                                                                    bg-gradient-to-r from-blue-100 to-blue-50
-                                                                    dark:from-blue-900/30 dark:to-blue-800/20
-                                                                    text-blue-800 dark:text-blue-200
-                                                                    border border-blue-200/50 dark:border-blue-700/30">
-                                                        {expense.category}
-                                                    </span>
-                                            </td>
-                                            <td className="px-8 py-6">
-                                                    <span className="inline-flex items-center px-4 py-2 rounded-xl text-sm font-bold
-                                                                    bg-gradient-to-r from-emerald-100 to-emerald-50
-                                                                    dark:from-emerald-900/30 dark:to-emerald-800/20
-                                                                    text-emerald-800 dark:text-emerald-200
-                                                                    border border-emerald-200/50 dark:border-emerald-700/30
-                                                                    shadow-sm">
-                                                        ₹{expense.amount.toLocaleString()}
-                                                    </span>
-                                            </td>
-                                            <td className="px-8 py-6 text-gray-600 dark:text-gray-400">
-                                                <div className="flex items-center">
-                                                    <span className="truncate max-w-md">{expense.description}</span>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        {totalPages > 1 && (
-                            <div className="p-8 pt-6 border-t border-gray-200/50 dark:border-gray-700/30">
-                                <div className="flex justify-center items-center gap-3 flex-wrap">
-                                    <button
-                                        onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
-                                        disabled={currentPage === 1}
-                                        className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
-                                            currentPage === 1
-                                                ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
-                                                : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
-                                        }`}
-                                    >
-                                        ← Previous
-                                    </button>
-
-                                    <div className="flex gap-2">
-                                        {getPaginationNumbers().map((num, idx) => (
-                                            <button
-                                                key={idx}
-                                                onClick={() => typeof num === "number" && setCurrentPage(num)}
-                                                disabled={num === "..."}
-                                                className={`w-12 h-12 rounded-xl font-bold transition-all duration-200 ${
-                                                    currentPage === num
-                                                        ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg transform scale-110"
-                                                        : num === "..."
-                                                            ? "text-gray-400 dark:text-gray-600 cursor-default"
-                                                            : "bg-white/60 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-600/30 hover:shadow-md transform hover:scale-105"
-                                                }`}
-                                            >
-                                                {num}
-                                            </button>
-                                        ))}
-                                    </div>
-
-                                    <button
-                                        onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
-                                        disabled={currentPage === totalPages}
-                                        className={`px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
-                                            currentPage === totalPages
-                                                ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
-                                                : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
-                                        }`}
-                                    >
-                                        Next →
-                                    </button>
+                        {expenses.length === 0 ? (
+                            <div className="p-8 text-center">
+                                <div className="text-gray-500 dark:text-gray-400 text-lg">
+                                    No expenses found for current month
                                 </div>
                             </div>
+                        ) : (
+                            <>
+                                <div className="overflow-hidden">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full">
+                                            <thead>
+                                            <tr className="bg-gradient-to-r from-gray-50 to-gray-100/50
+                                                              dark:from-gray-800/50 dark:to-gray-700/30
+                                                              border-b border-gray-200/50 dark:border-gray-600/30">
+                                                <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                                                    Date
+                                                </th>
+                                                <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                                                    Category
+                                                </th>
+                                                <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                                                    Amount
+                                                </th>
+                                                <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                                                    Description
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-200/50 dark:divide-gray-700/30">
+                                            {paginatedExpenses.map((expense) => (
+                                                <tr key={expense.id}
+                                                    className="group hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-transparent
+                                                                  dark:hover:from-blue-900/20 dark:hover:to-transparent
+                                                                  transition-all duration-200">
+                                                    <td className="px-8 py-6 text-gray-700 dark:text-gray-300 font-medium">
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-500
+                                                                               rounded-full opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                                                            {expense.date}
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-8 py-6">
+                                                            <span className="inline-flex items-center px-3 py-1 rounded-xl text-xs font-bold
+                                                                            bg-gradient-to-r from-blue-100 to-blue-50
+                                                                            dark:from-blue-900/30 dark:to-blue-800/20
+                                                                            text-blue-800 dark:text-blue-200
+                                                                            border border-blue-200/50 dark:border-blue-700/30">
+                                                                {expense.category}
+                                                            </span>
+                                                    </td>
+                                                    <td className="px-8 py-6">
+                                                            <span className="inline-flex items-center px-4 py-2 rounded-xl text-sm font-bold
+                                                                            bg-gradient-to-r from-emerald-100 to-emerald-50
+                                                                            dark:from-emerald-900/30 dark:to-emerald-800/20
+                                                                            text-emerald-800 dark:text-emerald-200
+                                                                            border border-emerald-200/50 dark:border-emerald-700/30
+                                                                            shadow-sm">
+                                                                ₹{expense.amount.toLocaleString()}
+                                                            </span>
+                                                    </td>
+                                                    <td className="px-8 py-6 text-gray-600 dark:text-gray-400">
+                                                        <div className="flex items-center">
+                                                            <span className="truncate max-w-md">{expense.description}</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                {totalPages > 1 && (
+                                    <div className="p-8 pt-6 border-t border-gray-200/50 dark:border-gray-700/30">
+                                        <div className="flex justify-center items-center gap-3 flex-wrap">
+                                            <button
+                                                onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
+                                                disabled={currentPage === 1}
+                                                className={`cursor-pointer px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                                                    currentPage === 1
+                                                        ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                                                        : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                                                }`}
+                                            >
+                                                ← Previous
+                                            </button>
+
+                                            <div className="flex gap-2">
+                                                {getPaginationNumbers().map((num, idx) => (
+                                                    <button
+                                                        key={idx}
+                                                        onClick={() => typeof num === "number" && setCurrentPage(num)}
+                                                        disabled={num === "..."}
+                                                        className={`cursor-pointer w-12 h-12 rounded-xl font-bold transition-all duration-200 ${
+                                                            currentPage === num
+                                                                ? "bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg transform scale-110"
+                                                                : num === "..."
+                                                                    ? "text-gray-400 dark:text-gray-600 cursor-default"
+                                                                    : "bg-white/60 dark:bg-gray-800/60 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200/50 dark:border-gray-600/30 hover:shadow-md transform hover:scale-105"
+                                                        }`}
+                                                    >
+                                                        {num}
+                                                    </button>
+                                                ))}
+                                            </div>
+
+                                            <button
+                                                onClick={() => setCurrentPage((prev) => Math.min(totalPages, prev + 1))}
+                                                disabled={currentPage === totalPages}
+                                                className={`cursor-pointer px-6 py-3 rounded-xl font-medium transition-all duration-200 ${
+                                                    currentPage === totalPages
+                                                        ? "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed"
+                                                        : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transform hover:scale-105"
+                                                }`}
+                                            >
+                                                Next →
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
                 </div>
