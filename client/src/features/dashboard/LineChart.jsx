@@ -105,8 +105,11 @@ const SpendingLineChart = ({ data = [] }) => {
                         }}
                         stroke={axisStroke}
                         className="text-sm"
-                        interval="preserveStartEnd"
-                        tick={{ fontSize: 12 }}
+                        interval={0}
+                        tick={{ fontSize: 10 }}
+                        angle={-45}
+                        textAnchor="end"
+                        height={60}
                     />
                     <YAxis
                         stroke={axisStroke}
