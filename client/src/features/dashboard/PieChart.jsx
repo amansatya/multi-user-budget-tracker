@@ -43,43 +43,58 @@ const PieChartComponent = ({ data }) => {
         navigate(`/categoryview/${encodeURIComponent(category)}`);
     };
 
+    const hasData = formattedData.length > 0;
+    const emptyData = [{ name: "No Data", value: 100 }];
+    const chartData = hasData ? formattedData : emptyData;
+
     return (
         <div className="bg-gradient-to-br from-slate-300 via-blue-50/30 to-indigo-100
                        dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-4 text-center">
-                Spending by Category
+                Spending by Category - Current Month
             </h2>
+
             <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                     <Pie
-                        data={formattedData}
+                        data={chartData}
                         dataKey="value"
                         nameKey="name"
                         cx="50%"
                         cy="50%"
                         outerRadius={100}
                         innerRadius={50}
-                        onClick={handleSliceClick}
-                        className="cursor-pointer"
+                        onClick={hasData ? handleSliceClick : undefined}
+                        className={hasData ? "cursor-pointer" : ""}
                     >
-                        {formattedData.map((entry, index) => (
+                        {chartData.map((entry, index) => (
                             <Cell
                                 key={`cell-${index}`}
-                                fill={getCategoryColor(entry.name)}
+                                fill={hasData ? getCategoryColor(entry.name) : "#6b7280"}
                             />
                         ))}
                     </Pie>
-                    <Tooltip
-                        contentStyle={{
-                            backgroundColor: "#4686e1",
-                            color: "#000000",
-                            border: "none",
-                        }}
-                    />
+                    {hasData && (
+                        <Tooltip
+                            contentStyle={{
+                                backgroundColor: "#4686e1",
+                                color: "#000000",
+                                border: "none",
+                            }}
+                        />
+                    )}
                 </PieChart>
             </ResponsiveContainer>
 
-            <CustomLegend data={formattedData} navigate={navigate} />
+            {hasData ? (
+                <CustomLegend data={formattedData} navigate={navigate} />
+            ) : (
+                <div className="mt-6 text-center">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                        No expenses for current month
+                    </p>
+                </div>
+            )}
         </div>
     );
 };
