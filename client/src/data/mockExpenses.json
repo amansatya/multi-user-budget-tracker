@@ -4,7 +4,7 @@
     "userId": "user123",
     "category": "Groceries",
     "amount": 350,
-    "date": "01-07-2025",
+    "date": "01-08-2025",
     "description": "Vegetables and fruits"
   },
   {
@@ -12,7 +12,7 @@
     "userId": "user123",
     "category": "Transport",
     "amount": 120,
-    "date": "02-07-2025",
+    "date": "02-08-2025",
     "description": "Uber to office"
   },
   {
@@ -20,7 +20,7 @@
     "userId": "user456",
     "category": "Entertainment",
     "amount": 499,
-    "date": "03-07-2025",
+    "date": "03-08-2025",
     "description": "Netflix subscription"
   },
   {
@@ -44,7 +44,7 @@
     "userId": "user456",
     "category": "Dining Out",
     "amount": 640,
-    "date": "07-07-2025",
+    "date": "07-08-2025",
     "description": "Dinner with friends"
   },
   {
@@ -52,7 +52,7 @@
     "userId": "user123",
     "category": "Groceries",
     "amount": 410,
-    "date": "10-07-2025",
+    "date": "10-08-2025",
     "description": "Weekend grocery run"
   },
   {
@@ -60,7 +60,7 @@
     "userId": "user456",
     "category": "Subscriptions",
     "amount": 299,
-    "date": "11-07-2025",
+    "date": "11-08-2025",
     "description": "Spotify Premium"
   },
   {
@@ -68,7 +68,7 @@
     "userId": "user123",
     "category": "Healthcare",
     "amount": 1500,
-    "date": "15-07-2025",
+    "date": "15-08-2025",
     "description": "Doctor visit"
   },
   {
@@ -76,7 +76,7 @@
     "userId": "user789",
     "category": "Transport",
     "amount": 90,
-    "date": "17-07-2025",
+    "date": "17-08-2025",
     "description": "Bus pass"
   },
   {
@@ -92,7 +92,7 @@
     "userId": "user456",
     "category": "Utilities",
     "amount": 750,
-    "date": "20-07-2025",
+    "date": "20-08-2025",
     "description": "Water bill"
   },
   {
@@ -100,7 +100,7 @@
     "userId": "user789",
     "category": "Dining Out",
     "amount": 980,
-    "date": "21-07-2025",
+    "date": "21-08-2025",
     "description": "Family dinner"
   },
   {
@@ -108,7 +108,7 @@
     "userId": "user123",
     "category": "Entertainment",
     "amount": 120,
-    "date": "22-07-2025",
+    "date": "22-08-2025",
     "description": "Movie ticket"
   },
   {
@@ -124,7 +124,7 @@
     "userId": "user789",
     "category": "Transport",
     "amount": 250,
-    "date": "26-07-2025",
+    "date": "26-08-2025",
     "description": "Cab rides"
   },
   {
@@ -132,7 +132,7 @@
     "userId": "user123",
     "category": "Rent",
     "amount": 12000,
-    "date": "01-07-2025",
+    "date": "01-08-2025",
     "description": "August rent"
   },
   {
@@ -148,7 +148,7 @@
     "userId": "user789",
     "category": "Healthcare",
     "amount": 2300,
-    "date": "04-07-2025",
+    "date": "04-08-2025",
     "description": "Lab tests"
   },
   {
@@ -156,7 +156,7 @@
     "userId": "user123",
     "category": "Subscriptions",
     "amount": 199,
-    "date": "05-07-2025",
+    "date": "05-08-2025",
     "description": "Amazon Prime"
   }
 ]
