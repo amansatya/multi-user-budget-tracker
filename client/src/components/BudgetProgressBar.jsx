@@ -1,4 +1,5 @@
 import React from "react";
+
 const BudgetProgressBar = ({ data, monthlyLimit }) => {
     const totalSpent = data.reduce((sum, expense) => sum + expense.amount, 0);
     const percentage = Math.min((totalSpent / monthlyLimit) * 100, 100);
@@ -8,7 +9,7 @@ const BudgetProgressBar = ({ data, monthlyLimit }) => {
         <div className="bg-gradient-to-br from-slate-300 via-blue-50/30 to-indigo-100
                        dark:from-gray-900 dark:via-slate-900 dark:to-indigo-950 p-6 rounded-lg shadow-md">
             <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
-                Monthly Budget Progress
+                Monthly Budget Progress - Current Month
             </h2>
 
             <div className="relative mb-6">
