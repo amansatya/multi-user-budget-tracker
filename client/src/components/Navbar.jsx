@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAuthenticated }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const userInitials = "SA"; // This should come from user context
+    const userInitials = "SA";
     const navigate = useNavigate();
 
     const handleToggleSidebar = () => setSidebarOpen(!sidebarOpen);
