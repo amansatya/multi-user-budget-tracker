@@ -44,7 +44,8 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
         if (item.scrollTo) {
             navigate(item.path);
             setTimeout(() => {
-                const chartsSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2');
+
+                const chartsSection = document.querySelector('#charts-section');
                 if (chartsSection) {
                     chartsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }

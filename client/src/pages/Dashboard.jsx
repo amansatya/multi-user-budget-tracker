@@ -8,7 +8,6 @@ import SetLimitModal from "../features/dashboard/SetLimitModal.jsx";
 import AlertModal from "../features/dashboard/AlertModal.jsx";
 import DashboardFilters from "../features/dashboard/DashboardFilters";
 import LayoutWrapper from "../layout/LayoutWrapper";
-
 import mockExpenses from "../data/mockExpenses.json";
 
 const Dashboard = () => {
@@ -98,12 +97,12 @@ const Dashboard = () => {
     };
 
     const handlePDFExport = () => {
-        // Add PDF export logic here
+
         console.log("Exporting to PDF...");
     };
 
     const handleExcelExport = () => {
-        // Add Excel export logic here
+
         console.log("Exporting to Excel...");
     };
 
@@ -143,7 +142,7 @@ const Dashboard = () => {
                     />
                     <DashboardFilters onFilter={handleFilter} />
                     <ExpenseTable expenses={filteredCurrentMonthExpenses} />
-                    {/* Export Section */}
+
                     <div className="bg-white dark:bg-gray-900 shadow-md p-4 rounded-lg">
                         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                             <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
@@ -179,10 +178,12 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                    <div id="charts-section" className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <PieChart data={currentMonthExpenses} />
                         <BudgetProgressBar data={currentMonthExpenses} monthlyLimit={monthlyBudget} />
                     </div>
+
                     <LineChart data={mockExpenses} />
                     {showAddModal && (
                         <AddExpenseModal
