@@ -5,7 +5,9 @@
     "category": "Groceries",
     "amount": 350,
     "date": "01-08-2025",
-    "description": "Vegetables and fruits"
+    "description": "Vegetables and fruits",
+    "isRecurring": true,
+    "recurrence": "weekly"
   },
   {
     "id": 2,
@@ -13,7 +15,9 @@
     "category": "Transport",
     "amount": 120,
     "date": "02-08-2025",
-    "description": "Uber to office"
+    "description": "Uber to office",
+    "isRecurring": false,
+    "recurrence": "off"
   },
   {
     "id": 3,
@@ -21,7 +25,9 @@
     "category": "Entertainment",
     "amount": 499,
     "date": "03-08-2025",
-    "description": "Netflix subscription"
+    "description": "Netflix subscription",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 4,
@@ -29,7 +35,9 @@
     "category": "Utilities",
     "amount": 850,
     "date": "05-07-2025",
-    "description": "Electricity bill"
+    "description": "Electricity bill",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 5,
@@ -37,7 +45,9 @@
     "category": "Rent",
     "amount": 12500,
     "date": "01-07-2025",
-    "description": "Monthly rent"
+    "description": "Monthly rent",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 6,
@@ -45,7 +55,9 @@
     "category": "Dining Out",
     "amount": 640,
     "date": "07-08-2025",
-    "description": "Dinner with friends"
+    "description": "Dinner with friends",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 7,
@@ -53,7 +65,9 @@
     "category": "Groceries",
     "amount": 410,
     "date": "10-08-2025",
-    "description": "Weekend grocery run"
+    "description": "Weekend grocery run",
+    "isRecurring": true,
+    "recurrence": "weekly"
   },
   {
     "id": 8,
@@ -61,7 +75,9 @@
     "category": "Subscriptions",
     "amount": 299,
     "date": "11-08-2025",
-    "description": "Spotify Premium"
+    "description": "Spotify Premium",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 9,
@@ -69,7 +85,9 @@
     "category": "Healthcare",
     "amount": 1500,
     "date": "15-08-2025",
-    "description": "Doctor visit"
+    "description": "Doctor visit",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 10,
@@ -77,7 +95,9 @@
     "category": "Transport",
     "amount": 90,
     "date": "17-08-2025",
-    "description": "Bus pass"
+    "description": "Bus pass",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 11,
@@ -85,7 +105,9 @@
     "category": "Shopping",
     "amount": 2200,
     "date": "19-07-2025",
-    "description": "New shoes"
+    "description": "New shoes",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 12,
@@ -93,7 +115,9 @@
     "category": "Utilities",
     "amount": 750,
     "date": "20-08-2025",
-    "description": "Water bill"
+    "description": "Water bill",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 13,
@@ -101,7 +125,9 @@
     "category": "Dining Out",
     "amount": 980,
     "date": "21-08-2025",
-    "description": "Family dinner"
+    "description": "Family dinner",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 14,
@@ -109,7 +135,9 @@
     "category": "Entertainment",
     "amount": 120,
     "date": "22-08-2025",
-    "description": "Movie ticket"
+    "description": "Movie ticket",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 15,
@@ -117,7 +145,9 @@
     "category": "Groceries",
     "amount": 370,
     "date": "25-07-2025",
-    "description": "Weekend supplies"
+    "description": "Weekend supplies",
+    "isRecurring": true,
+    "recurrence": "weekly"
   },
   {
     "id": 16,
@@ -125,7 +155,9 @@
     "category": "Transport",
     "amount": 250,
     "date": "26-08-2025",
-    "description": "Cab rides"
+    "description": "Cab rides",
+    "isRecurring": false,
+    "recurrence": "off"
   },
   {
     "id": 17,
@@ -133,7 +165,9 @@
     "category": "Rent",
     "amount": 12000,
     "date": "01-08-2025",
-    "description": "August rent"
+    "description": "Shop rent",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 18,
@@ -141,7 +175,9 @@
     "category": "Entertainment",
     "amount": 399,
     "date": "02-07-2025",
-    "description": "Book purchase"
+    "description": "Book purchase",
+    "isRecurring": false,
+    "recurrence": "0ff"
   },
   {
     "id": 19,
@@ -149,7 +185,9 @@
     "category": "Healthcare",
     "amount": 2300,
     "date": "04-08-2025",
-    "description": "Lab tests"
+    "description": "Lab tests",
+    "isRecurring": true,
+    "recurrence": "monthly"
   },
   {
     "id": 20,
@@ -157,6 +195,18 @@
     "category": "Subscriptions",
     "amount": 199,
     "date": "05-08-2025",
-    "description": "Amazon Prime"
-  }
+    "description": "Amazon Prime",
+    "isRecurring": true,
+    "recurrence": "yearly"
+  },
+    {
+        "id": 21,
+        "userId": "user456",
+        "category": "Shopping",
+        "amount": 1500,
+        "date": "06-08-2025",
+        "description": "Clothes shopping",
+        "isRecurring": false,
+        "recurrence": "0ff"
+    }
 ]

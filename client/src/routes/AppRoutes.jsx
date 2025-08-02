@@ -10,6 +10,7 @@ import Settings from "../pages/Settings";
 import NotFound from "../pages/NotFound";
 import Reset from "../pages/Reset";
 import CategoryView from "../pages/CategoryView";
+import RecurringPayments from "../pages/RecurringPayments";
 const AppRoutes = () => {
     return (
         <Routes>
@@ -22,6 +23,7 @@ const AppRoutes = () => {
             <Route path="/reset" element={<Reset />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/categoryview/:category" element={<CategoryView />} />
+            <Route path="/recurring-payments" element={<RecurringPayments />} />
         </Routes>
     );
 };

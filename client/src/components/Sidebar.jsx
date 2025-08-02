@@ -36,18 +36,14 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
         {
             label: "Recurring Expenses",
             icon: <Repeat className="w-5 h-5" />,
-            path: "/settings",
-            hash: "#recurring",
+            path: "/recurring-payments",
         },
     ];
 
     const handleNavigation = (item) => {
         if (item.scrollTo) {
-            // Navigate to dashboard first
             navigate(item.path);
-            // Wait for navigation to complete, then scroll to charts section
             setTimeout(() => {
-                // Look for the charts section (grid containing PieChart and BudgetProgressBar)
                 const chartsSection = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2');
                 if (chartsSection) {
                     chartsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -109,7 +105,7 @@ const Sidebar = ({ isOpen, onClose, isAuthenticated }) => {
                             onClick={() => handleNavigation(item)}
                             className={`flex items-center w-full px-4 py-3 rounded-lg text-left transition-all duration-200 group cursor-pointer ${
                                 isActive
-                                    ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 border-r-2 border-blue-500"
+                                    ? "bg-blue-100 dark:bg-gray-900/30 text-blue-700 dark:text-blue-300 border-r-2 border-red-500"
                                     : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-100"
                             }`}
                         >
