@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { XCircle } from "lucide-react";
 
-const AddExpenseModal = ({ onClose, onAddExpense }) => {
+const AddExpenseModal = ({ isOpen, onClose, onAddExpense }) => {
     const [category, setCategory] = useState("");
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState("");
@@ -12,13 +12,25 @@ const AddExpenseModal = ({ onClose, onAddExpense }) => {
 
     const isFormValid = category && amount && date && description;
 
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     const handleRecurringChange = (e) => {
         const checked = e.target.checked;
         setIsRecurring(checked);
         if (!checked) {
             setRecurrence("off");
         } else {
-            setRecurrence("monthly"); // Default to monthly when enabling
+            setRecurrence("monthly");
         }
     };
 
@@ -41,6 +53,8 @@ const AddExpenseModal = ({ onClose, onAddExpense }) => {
         onAddExpense(newExpense);
         onClose();
     };
+
+    if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gradient-to-br from-indigo-900/60 via-purple-800/50 to-pink-700/40 dark:from-slate-900/80 dark:via-gray-800/70 dark:to-zinc-900/60 backdrop-blur-sm pt-16">

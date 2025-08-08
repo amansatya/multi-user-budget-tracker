@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { X } from "lucide-react";
 
-const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit, onSave }) => {
+const SetExpenseLimitModal = ({ isOpen, onClose, currentLimit, onSave }) => {
     const [limit, setLimit] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        setLimit(initialLimit || "");
+        setLimit("");
         setError("");
-    }, [initialLimit, isOpen]);
+    }, [isOpen]);
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,7 +41,7 @@ const SetExpenseLimitModal = ({ isOpen, onClose, initialLimit, onSave }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-900/60 via-purple-800/50 to-pink-700/40 dark:from-slate-900/80 dark:via-gray-800/70 dark:to-zinc-900/60 backdrop-blur-sm">
+        <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-900/60 via-purple-800/50 to-pink-700/40 dark:from-slate-900/80 dark:via-gray-800/70 dark:to-zinc-900/60 backdrop-blur-sm z-50">
             <div className="bg-gradient-to-br from-white via-blue-50 to-indigo-100 dark:from-gray-800 dark:via-slate-800 dark:to-gray-900 border border-white/20 dark:border-gray-700/50 p-6 rounded-lg shadow-lg w-full max-w-md relative">
                 <button onClick={onClose} className="cursor-pointer absolute top-3 right-3 text-gray-500 hover:text-red-500">
                     <X />

@@ -68,19 +68,23 @@ const SpendingLineChart = ({ data = [] }) => {
     const chartData = getMonthlySpending(data);
 
     const [isDarkMode, setIsDarkMode] = useState(
-        window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.classList.contains('dark')
     );
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-        const handleChange = (e) => {
-            setIsDarkMode(e.matches);
+        const checkDarkMode = () => {
+            setIsDarkMode(document.documentElement.classList.contains('dark'));
         };
 
-        mediaQuery.addEventListener('change', handleChange);
+        const observer = new MutationObserver(checkDarkMode);
 
-        return () => mediaQuery.removeEventListener('change', handleChange);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     const gridStroke = isDarkMode ? '#e2e8f0' : '#000000';

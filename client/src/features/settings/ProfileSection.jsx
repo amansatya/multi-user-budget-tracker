@@ -70,17 +70,17 @@ const ProfileSection = () => {
                         <>
                             <button
                                 onClick={toggleEdit}
-                                className="px-4 py-2 rounded-md bg-gray-400 text-white hover:bg-gray-500 mr-2"
+                                className="cursor-pointer px-4 py-2 rounded-md bg-gray-400 text-white hover:bg-gray-500 mr-2"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={() => {
                                     toggleEdit();
-                                    // 🔄 Simulate saving data
+
                                     console.log("Saved Profile:", user);
                                 }}
-                                className="px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
+                                className="cursor-pointer px-4 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700"
                             >
                                 Save
                             </button>
@@ -88,7 +88,7 @@ const ProfileSection = () => {
                     ) : (
                         <button
                             onClick={toggleEdit}
-                            className="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700"
+                            className="cursor-pointer px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700"
                         >
                             Edit Profile
                         </button>

@@ -6,7 +6,7 @@ const DayView = () => {
     const { date } = useParams();
     return (
         <LayoutWrapper>
-            <div className="text-white p-6">
+            <div className="text-black dark:text-white p-6">
                 <h1 className="text-2xl font-semibold">Day View</h1>
                 <p> Viewing expenses for <strong>{date}</strong></p>
             </div>

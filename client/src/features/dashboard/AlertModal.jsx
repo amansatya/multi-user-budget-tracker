@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AlertTriangle, X } from "lucide-react";
 
 const AlertModal = ({ isOpen, onClose, totalSpent, monthlyBudget }) => {
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     if (!isOpen || totalSpent <= monthlyBudget) return null;
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/40 z-50">
+        <div className="h-165 fixed inset-0 flex items-center justify-center z-50 bg-gradient-to-br from-indigo-900/60 via-purple-800/50 to-pink-700/40 dark:from-slate-900/80 dark:via-gray-800/70 dark:to-zinc-900/60 backdrop-blur-sm pt-16">
             <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 rounded-lg shadow-lg max-w-md w-full p-6 relative border border-red-500 dark:border-red-600">
                 <button
                     onClick={onClose}
@@ -27,7 +40,7 @@ const AlertModal = ({ isOpen, onClose, totalSpent, monthlyBudget }) => {
                 <div className="mt-6 flex justify-end">
                     <button
                         onClick={onClose}
-                        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
+                        className="cursor-pointer bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm"
                     >
                         Dismiss
                     </button>

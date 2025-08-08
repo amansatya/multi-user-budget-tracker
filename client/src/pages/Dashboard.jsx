@@ -122,7 +122,7 @@ const Dashboard = () => {
                         <div className="flex gap-3">
                             <button
                                 onClick={() => setShowAddModal(true)}
-                                className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-sm transition-colors duration-200"
+                                className="z-50 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md shadow-sm transition-colors duration-200"
                             >
                                 ➕ Add Expense
                             </button>
