@@ -19,7 +19,7 @@ export const ThemeProvider = ({ children }) => {
             return savedTheme;
         }
 
-        return getSystemTheme(); // fallback to system theme
+        return getSystemTheme();
     };
 
     const [theme, setTheme] = useState(getInitialTheme);
@@ -27,13 +27,10 @@ export const ThemeProvider = ({ children }) => {
     useEffect(() => {
         const root = document.documentElement;
 
-        // Remove both themes first
         root.classList.remove("light", "dark");
 
-        // Apply correct class
         root.classList.add(theme);
 
-        // Save to localStorage
         localStorage.setItem("theme", theme);
     }, [theme]);
 

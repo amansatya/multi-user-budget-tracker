@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Sun, Moon, Menu, X, User, LogOut, LayoutDashboard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
-const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAuthenticated }) => {
+const Navbar = ({ sidebarOpen, setSidebarOpen, isAuthenticated }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const userInitials = "SA";
     const navigate = useNavigate();
+
+    const { theme, toggleTheme } = useTheme();
 
     const handleToggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -41,12 +44,13 @@ const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAut
             </div>
 
             <div className="flex items-center gap-3">
+
                 <button
-                    onClick={toggleDarkMode}
+                    onClick={toggleTheme}
                     className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105"
                     aria-label="Toggle Dark Mode"
                 >
-                    {isDarkMode ? (
+                    {theme === "dark" ? (
                         <Sun className="w-5 h-5 text-yellow-500" />
                     ) : (
                         <Moon className="w-5 h-5 text-blue-500" />
@@ -70,7 +74,6 @@ const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAut
                     </div>
                 ) : (
                     <div className="relative">
-
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="cursor-pointer w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center font-semibold hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
@@ -80,12 +83,10 @@ const Navbar = ({ sidebarOpen, setSidebarOpen, isDarkMode, toggleDarkMode, isAut
 
                         {dropdownOpen && (
                             <>
-
                                 <div
                                     className="fixed inset-0 z-10"
                                     onClick={() => setDropdownOpen(false)}
                                 />
-
                                 <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 py-1">
                                     <button
                                         onClick={() => handleNavigate("/dashboard")}
