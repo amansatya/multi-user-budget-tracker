@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { Sun, Moon, Menu, X, User, LogOut, LayoutDashboard } from "lucide-react";
+import { Menu, X, User, LogOut, LayoutDashboard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+import DarkModeToggle from "./DarkModeToggle";
 
 const Navbar = ({ sidebarOpen, setSidebarOpen, isAuthenticated }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const userInitials = "SA";
     const navigate = useNavigate();
-
-    const { theme, toggleTheme } = useTheme();
 
     const handleToggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
@@ -45,17 +43,7 @@ const Navbar = ({ sidebarOpen, setSidebarOpen, isAuthenticated }) => {
 
             <div className="flex items-center gap-3">
 
-                <button
-                    onClick={toggleTheme}
-                    className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-200 hover:scale-105"
-                    aria-label="Toggle Dark Mode"
-                >
-                    {theme === "dark" ? (
-                        <Sun className="w-5 h-5 text-yellow-500" />
-                    ) : (
-                        <Moon className="w-5 h-5 text-blue-500" />
-                    )}
-                </button>
+                <DarkModeToggle />
 
                 {!isAuthenticated ? (
                     <div className="flex items-center gap-2">
