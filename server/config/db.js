@@ -1,9 +1,7 @@
-// server/config/db.js
 import mongoose from "mongoose";
 
 const connectDB = async () => {
     try {
-        // pick DB URI depending on environment
         const uri =
             process.env.NODE_ENV === "production"
                 ? process.env.MONGO_URI_PROD
