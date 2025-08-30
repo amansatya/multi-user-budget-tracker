@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import mockExpenses from "../data/mockExpenses";
 import { getCategoryColor } from "../utils/categoryHelpers";
 import LayoutWrapper from "../layout/LayoutWrapper";
+import UpdateExpenseModal from "../features/datamanipulation/UpdateExpenseModal";
+import DeleteConfirmModal from "../features/datamanipulation/DeleteConfirmModal";
 
 const CategoryView = () => {
     const { category } = useParams();
@@ -10,6 +12,10 @@ const CategoryView = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [dropdownOpen, setDropdownOpen] = useState(null);
+    const [updateModalOpen, setUpdateModalOpen] = useState(false);
+    const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+    const [selectedExpense, setSelectedExpense] = useState(null);
 
     const filteredExpenses = mockExpenses.filter(
         (expense) => expense.category.toLowerCase() === category.toLowerCase()
@@ -31,6 +37,38 @@ const CategoryView = () => {
         if (window.innerWidth < 768) {
             setSidebarOpen(false);
         }
+    };
+
+    const toggleDropdown = (expenseId) => {
+        setDropdownOpen(dropdownOpen === expenseId ? null : expenseId);
+    };
+
+    const handleUpdate = (expense) => {
+        setSelectedExpense(expense);
+        setUpdateModalOpen(true);
+        setDropdownOpen(null);
+        console.log('Update expense:', expense);
+    };
+
+    const handleDelete = (expense) => {
+        setSelectedExpense(expense);
+        setDeleteModalOpen(true);
+        setDropdownOpen(null);
+        console.log('Delete expense:', expense);
+    };
+
+    const handleUpdateSubmit = (updatedExpense) => {
+        console.log('Updated expense data:', updatedExpense);
+        setUpdateModalOpen(false);
+        setSelectedExpense(null);
+        // TODO: Connect to backend API in Phase 2
+    };
+
+    const handleDeleteConfirm = () => {
+        console.log('Confirmed delete for expense:', selectedExpense);
+        setDeleteModalOpen(false);
+        setSelectedExpense(null);
+        // TODO: Connect to backend API in Phase 2
     };
 
     return (
@@ -156,6 +194,9 @@ const CategoryView = () => {
                                                     <th className="px-8 py-6 text-left text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
                                                         Description
                                                     </th>
+                                                    <th className="px-8 py-6 text-center text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">
+                                                        Actions
+                                                    </th>
                                                 </tr>
                                                 </thead>
                                                 <tbody className="divide-y divide-gray-200/50 dark:divide-gray-700/30">
@@ -186,6 +227,51 @@ const CategoryView = () => {
                                                                 <span className="truncate max-w-md">{expense.description}</span>
                                                             </div>
                                                         </td>
+                                                        <td className="px-8 py-6 text-center">
+                                                            <div className="relative">
+                                                                <button
+                                                                    onClick={() => toggleDropdown(expense.id)}
+                                                                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700
+                                                                             text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200
+                                                                             transition-all duration-200 transform hover:scale-110"
+                                                                >
+                                                                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+                                                                    </svg>
+                                                                </button>
+
+                                                                {dropdownOpen === expense.id && (
+                                                                    <div className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800
+                                                                                   rounded-xl shadow-xl border border-gray-200/50 dark:border-gray-700/50
+                                                                                   z-50 overflow-hidden">
+                                                                        <button
+                                                                            onClick={() => handleUpdate(expense)}
+                                                                            className="w-full px-4 py-3 text-left hover:bg-blue-50 dark:hover:bg-blue-900/20
+                                                                                     text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400
+                                                                                     transition-colors duration-200 flex items-center gap-3"
+                                                                        >
+                                                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                            </svg>
+                                                                            Update
+                                                                        </button>
+                                                                        <button
+                                                                            onClick={() => handleDelete(expense)}
+                                                                            className="w-full px-4 py-3 text-left hover:bg-red-50 dark:hover:bg-red-900/20
+                                                                                     text-gray-700 dark:text-gray-200 hover:text-red-600 dark:hover:text-red-400
+                                                                                     transition-colors duration-200 flex items-center gap-3"
+                                                                        >
+                                                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                            </svg>
+                                                                            Delete
+                                                                        </button>
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 ))}
                                                 </tbody>
@@ -197,6 +283,30 @@ const CategoryView = () => {
                         </div>
                     </div>
                 </div>
+
+                {updateModalOpen && (
+                    <UpdateExpenseModal
+                        isOpen={updateModalOpen}
+                        onClose={() => {
+                            setUpdateModalOpen(false);
+                            setSelectedExpense(null);
+                        }}
+                        expense={selectedExpense}
+                        onSubmit={handleUpdateSubmit}
+                    />
+                )}
+
+                {deleteModalOpen && (
+                    <DeleteConfirmModal
+                        isOpen={deleteModalOpen}
+                        onClose={() => {
+                            setDeleteModalOpen(false);
+                            setSelectedExpense(null);
+                        }}
+                        item={selectedExpense}
+                        onConfirm={handleDeleteConfirm}
+                    />
+                )}
             </div>
         </LayoutWrapper>
     );
