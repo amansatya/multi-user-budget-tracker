@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import User from "./models/User.js";
 import Expense from "./models/Expense.js";
+import Budget from "./models/Budget.js";
 
 dotenv.config();
 
@@ -53,10 +54,6 @@ app.post("/api/test-expense", async (req, res) => {
             });
         }
 
-        if (!user || !user._id) {
-            return res.status(400).json({ error: "No valid user found to attach expense." });
-        }
-
         const expense = await Expense.create({
             userId: user._id,
             date: new Date(),
@@ -85,6 +82,57 @@ app.get("/api/test-expense", async (req, res) => {
         res.json(expenses);
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+app.post("/api/test-budget", async (req, res) => {
+    try {
+        let user = await User.findOne({ email: "testuser@example.com" });
+        if (!user) {
+            user = await User.create({
+                name: "Budget User",
+                email: "testuser@example.com",
+                password: "password123",
+            });
+        }
+
+        const budget = await Budget.create({
+            userId: user._id,
+            month: "08-2025",
+            maxAmount: 10000,
+        });
+
+        res.status(201).json(budget);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get("/api/test-budget", async (req, res) => {
+    try {
+        const budgets = await Budget.find().populate("userId", "name email");
+        res.json(budgets);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.put("/api/test-budget/:id", async (req, res) => {
+    try {
+        const { maxAmount } = req.body;
+        const updatedBudget = await Budget.findByIdAndUpdate(
+            req.params.id,
+            { maxAmount },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedBudget) {
+            return res.status(404).json({ message: "Budget not found" });
+        }
+
+        res.json(updatedBudget);
+    } catch (err) {
+        res.status(500).json({ message: "Error updating budget", error: err.message });
     }
 });
 

@@ -1,0 +1,20 @@
+{
+  "name": "multi-user-budget-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amansatya/multi-user-budget-tracker.git"
+  },
+  "private": true,
+  "dependencies": {
+    "lucide-react": "^0.542.0",
+    "mongoose": "^8.18.0",
+    "react": "^19.1.1",
+    "react-router-dom": "^7.8.2"
+  }
+}
