@@ -14,7 +14,7 @@
     "userId": "user123",
     "category": "Transport",
     "amount": 120,
-    "date": "02-08-2025",
+    "date": "02-09-2025",
     "description": "Uber to office",
     "isRecurring": false,
     "recurrence": "off"
@@ -54,7 +54,7 @@
     "userId": "user456",
     "category": "Dining Out",
     "amount": 640,
-    "date": "07-08-2025",
+    "date": "07-09-2025",
     "description": "Dinner with friends",
     "isRecurring": false,
     "recurrence": "0ff"
@@ -84,7 +84,7 @@
     "userId": "user123",
     "category": "Healthcare",
     "amount": 1500,
-    "date": "15-08-2025",
+    "date": "15-09-2025",
     "description": "Doctor visit",
     "isRecurring": false,
     "recurrence": "0ff"
@@ -124,7 +124,7 @@
     "userId": "user789",
     "category": "Dining Out",
     "amount": 980,
-    "date": "21-08-2025",
+    "date": "21-09-2025",
     "description": "Family dinner",
     "isRecurring": false,
     "recurrence": "0ff"
@@ -154,7 +154,7 @@
     "userId": "user789",
     "category": "Transport",
     "amount": 250,
-    "date": "26-08-2025",
+    "date": "26-09-2025",
     "description": "Cab rides",
     "isRecurring": false,
     "recurrence": "off"
@@ -184,7 +184,7 @@
     "userId": "user789",
     "category": "Healthcare",
     "amount": 2300,
-    "date": "04-08-2025",
+    "date": "04-09-2025",
     "description": "Lab tests",
     "isRecurring": true,
     "recurrence": "monthly"
@@ -194,7 +194,7 @@
     "userId": "user123",
     "category": "Subscriptions",
     "amount": 199,
-    "date": "05-08-2025",
+    "date": "05-09-2025",
     "description": "Amazon Prime",
     "isRecurring": true,
     "recurrence": "yearly"
@@ -204,7 +204,7 @@
         "userId": "user456",
         "category": "Shopping",
         "amount": 1500,
-        "date": "06-08-2025",
+        "date": "06-09-2025",
         "description": "Clothes shopping",
         "isRecurring": false,
         "recurrence": "0ff"
