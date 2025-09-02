@@ -7,6 +7,8 @@ import userRoutes from "./routes/userRoutes.js";
 import expenseRoutes from "./routes/expenseRoutes.js";
 import budgetRoutes from "./routes/budgetRoutes.js";
 
+import { notFound, errorHandler } from "./middlewares/errorMiddleware.js";
+
 dotenv.config();
 
 const app = express();
@@ -22,6 +24,9 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/budgets", budgetRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const startServer = async () => {
     try {
